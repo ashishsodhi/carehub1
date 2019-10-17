@@ -1,0 +1,185 @@
+entity  ProjectTemplate {
+	Id Long,
+    serviceId Long required,
+    templateDescription String required,
+    templateCreationClass  String required,
+    whenCreated String 
+}
+
+entity Project {
+	Id Long,
+	memberId Long required,
+    createdByMemberId Long required,
+    serviceId Long required,
+    status Status required,
+    statusTLM Instant,
+    whenCreated Instant 
+ }
+
+entity ProjectParticipant {
+	Id Long,
+	// projectId Long required,
+	memberId Long,
+    inviterId Long required,
+    firstName String required,
+    emailAddress String required,    
+    relationshipToInviter String,
+	permission Permission required,
+    status ParticipantStatus required,
+    statusTLM Instant,
+    whenCreated Instant 
+}
+
+entity Recipient {
+	Id Long
+	//projectId Long required,
+    //firstName String required,
+	//lastName String required,
+    //birthYear Integer,
+    //gender Gender,
+	relationshipToYou String,
+    //description String,
+    //imageId Long,
+    status Status required,
+    statusTLM Instant,
+    whenCreated Instant 
+}
+
+entity Concerns {
+	Id Long,
+   // recipientId Long required,
+	description String required,
+	status Status required,
+	whenCreated Instant 
+}
+
+entity Responsibilities {
+	Id Long,
+    // recipientId Long required,
+	description String required,
+	status Status required,
+	whenCreated Instant 
+}
+
+entity ItemParticipant
+ {
+ 	Id Long
+    // projectParticipantId Long required,
+	// recipientItemId Long required,
+	permission Permission required,
+    whenCreated Instant
+}
+
+entity RecipientItem {
+	Id Long,
+	// recipientId Long required,
+    permissionToAll Boolean required,
+	// taskId Long,
+	// documentId Long,
+	whenCreated Instant
+}
+
+
+entity Task {
+	Id Long,
+    name String required,
+	description String required,
+    category String,
+    assignedToMember Long,
+    dueDate Instant,
+    status TaskStatus required,
+    statusTLM Instant,
+	whenCreated Instant
+}
+
+entity Document {
+	Id Long,
+	fileName String,
+    extension String,
+    fileContent ImageBlob
+	fileId Long,
+	whenCreated Instant
+}
+
+entity Message {
+	Id Long,
+	// projectId Long,
+    recipientId Long,
+   // recipientItemId Long,
+    postedByMemberId Long required,
+    messageBody String,
+    whenCreated Instant 
+}
+
+entity MessageItem {
+	Id Long,
+	// messageId Long required,
+    // recipientItemId Long required,
+    whenCreated Instant
+}
+
+enum Permission {
+    NONE, EDIT
+}
+
+enum Status {
+    DRAFT, INACTIVE, ACTIVE
+}
+
+enum TaskStatus {
+    DRAFT, OPEN, COMPLETED, DELETED
+}
+
+enum ParticipantStatus {
+    INVITED, PENDING, INACTIVE, ACTIVE
+}
+
+
+relationship OneToMany {
+	Project to Recipient,
+    Project to ProjectParticipant,
+    Project to Message
+    
+}
+relationship OneToMany {
+	ProjectParticipant to ItemParticipant   
+}
+
+relationship OneToMany {
+	Recipient to RecipientItem,
+    Recipient to Concerns,
+    Recipient to Responsibilities
+}
+
+relationship OneToMany {
+	RecipientItem to ItemParticipant,
+    RecipientItem to Message
+}
+relationship OneToMany {
+	Message to MessageItem
+}
+
+relationship OneToMany {
+	MessageItem to RecipientItem
+}
+
+
+relationship OneToOne {
+    RecipientItem{task} to Task{recipientItem(taskId)},
+    RecipientItem{document} to Document{recipientItem(documentId)} 
+}
+
+
+// Set pagination options
+// paginate JobHistory, Employee with infinite-scroll
+// paginate Job with pagination
+
+// Use Data Transfert Objects (DTO)
+ // dto * with mapstruct
+
+// Set service options to all except few
+ // service all  with serviceImpl 
+ service * with serviceClass
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

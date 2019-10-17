@@ -1,0 +1,62 @@
+{
+    "name": "Recipient",
+    "fields": [
+        {
+            "fieldName": "relationshipToYou",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "DRAFT,INACTIVE,ACTIVE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "statusTLM",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "recipientItem",
+            "otherEntityRelationshipName": "recipient",
+            "relationshipName": "recipientItem"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "concerns",
+            "otherEntityRelationshipName": "recipient",
+            "relationshipName": "concerns"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "responsibilities",
+            "otherEntityRelationshipName": "recipient",
+            "relationshipName": "responsibilities"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "recipient",
+            "relationshipName": "project",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101356",
+    "entityTableName": "recipient",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity RecipientItem.
+    -->
+    <changeSet id="20191017101400-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="task_id"
+                                 baseTableName="recipient_item"
+                                 constraintName="fk_recipient_item_task_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_id"
+                                 baseTableName="recipient_item"
+                                 constraintName="fk_recipient_item_document_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document"/>
+
+        <addForeignKeyConstraint baseColumnNames="recipient_id"
+                                 baseTableName="recipient_item"
+                                 constraintName="fk_recipient_item_recipient_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="recipient"/>
+
+        <addForeignKeyConstraint baseColumnNames="message_item_id"
+                                 baseTableName="recipient_item"
+                                 constraintName="fk_recipient_item_message_item_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="message_item"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,72 @@
+{
+    "name": "Project",
+    "fields": [
+        {
+            "fieldName": "memberId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdByMemberId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "serviceId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "DRAFT,INACTIVE,ACTIVE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "statusTLM",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "recipient",
+            "otherEntityRelationshipName": "project",
+            "relationshipName": "recipient"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "projectParticipant",
+            "otherEntityRelationshipName": "project",
+            "relationshipName": "projectParticipant"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "project",
+            "relationshipName": "message"
+        }
+    ],
+    "changelogDate": "20191017101354",
+    "entityTableName": "project",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

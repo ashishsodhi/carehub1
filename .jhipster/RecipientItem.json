@@ -1,0 +1,70 @@
+{
+    "name": "RecipientItem",
+    "fields": [
+        {
+            "fieldName": "permissionToAll",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "task",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "document",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "document",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "itemParticipant",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "itemParticipant"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "message"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "recipient",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "recipient",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "messageItem",
+            "otherEntityRelationshipName": "recipientItem",
+            "relationshipName": "messageItem",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101400",
+    "entityTableName": "recipient_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

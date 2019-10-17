@@ -1,0 +1,34 @@
+{
+    "name": "MessageItem",
+    "fields": [
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "recipientItem",
+            "otherEntityRelationshipName": "messageItem",
+            "relationshipName": "recipientItem"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "message",
+            "otherEntityRelationshipName": "messageItem",
+            "relationshipName": "message",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101404",
+    "entityTableName": "message_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

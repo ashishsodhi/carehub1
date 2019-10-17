@@ -1,0 +1,45 @@
+{
+    "name": "Document",
+    "fields": [
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extension",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileContent",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fileId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "recipientItem",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "recipientItem",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191017101402",
+    "entityTableName": "document",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
