@@ -1,0 +1,83 @@
+{
+    "name": "ProjectParticipant",
+    "fields": [
+        {
+            "fieldName": "memberId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "inviterId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "emailAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "relationshipToInviter",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "permission",
+            "fieldType": "Permission",
+            "fieldValues": "NONE,EDIT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "ParticipantStatus",
+            "fieldValues": "INVITED,PENDING,INACTIVE,ACTIVE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "statusTLM",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "itemParticipant",
+            "otherEntityRelationshipName": "projectParticipant",
+            "relationshipName": "itemParticipant"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "projectParticipant",
+            "relationshipName": "project",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101355",
+    "entityTableName": "project_participant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

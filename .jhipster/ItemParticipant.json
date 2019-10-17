@@ -1,0 +1,43 @@
+{
+    "name": "ItemParticipant",
+    "fields": [
+        {
+            "fieldName": "permission",
+            "fieldType": "Permission",
+            "fieldValues": "NONE,EDIT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "projectParticipant",
+            "otherEntityRelationshipName": "itemParticipant",
+            "relationshipName": "projectParticipant",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "recipientItem",
+            "otherEntityRelationshipName": "itemParticipant",
+            "relationshipName": "recipientItem",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101359",
+    "entityTableName": "item_participant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

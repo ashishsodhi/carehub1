@@ -1,0 +1,56 @@
+{
+    "name": "Message",
+    "fields": [
+        {
+            "fieldName": "recipientId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "postedByMemberId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "messageBody",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "whenCreated",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "messageItem",
+            "otherEntityRelationshipName": "message",
+            "relationshipName": "messageItem"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "message",
+            "relationshipName": "project",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "recipientItem",
+            "otherEntityRelationshipName": "message",
+            "relationshipName": "recipientItem",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191017101403",
+    "entityTableName": "message",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
